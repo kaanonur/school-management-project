@@ -42,7 +42,7 @@
                 </ul>
             </li>
 
-            <li class="treeview">
+            <li class="treeview {{ $prefix == '/profile' ? 'active' : '' }}">
                 <a href="#">
                     <i data-feather="mail"></i> <span>Manage Profile</span>
                     <span class="pull-right-container">
@@ -50,8 +50,19 @@
             </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="{{ route('profile.view') }}"><i class="ti-more"></i>Your Profile</a></li>
-                    <li><a href="{{ route('password.view') }}"><i class="ti-more"></i>Change Password</a></li>
+                    <li class="{{ $route == 'profile.view' ? 'active' : '' }}"><a href="{{ route('profile.view') }}"><i class="ti-more"></i>Your Profile</a></li>
+                </ul>
+            </li>
+
+            <li class="treeview {{ $prefix == '/setups' ? 'active' : '' }}">
+                <a href="#">
+                    <i data-feather="mail"></i> <span>Setup Management</span>
+                    <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li class="{{ $route == 'student.class.create' ? 'active' : '' }}"><a href="{{ route('student.class.create') }}"><i class="ti-more"></i>Student Class</a></li>
                 </ul>
             </li>
 
