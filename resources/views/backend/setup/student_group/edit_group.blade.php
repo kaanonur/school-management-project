@@ -5,22 +5,22 @@
         <section class="content">
             <div class="box">
                 <div class="box-header with-border">
-                    <h4 class="box-title">Add Student Year</h4>
+                    <h4 class="box-title">Update Student Group</h4>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
                     <div class="row">
                         <div class="col">
-                            <form method="POST" action="{{ route('student.year.store') }}">
+                            <form method="POST" action="{{ route('student.group.update', $studentGroup->id) }}">
                                 @csrf
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="form-group">
-                                                    <h5>Student Year <span class="text-danger">*</span></h5>
+                                                    <h5>Student Group Name <span class="text-danger">*</span></h5>
                                                     <div class="controls">
-                                                        <input type="number" name="name" class="form-control" value="{{ old('name') }}">
+                                                        <input type="text" name="name" class="form-control" value="{{ $studentGroup->name }}">
                                                     </div>
                                                     @error('name')
                                                     <div class="form-control-feedback text-danger">{{ $message }}</small></div>
@@ -31,7 +31,7 @@
                                     </div>
                                 </div>
                                 <div class="text-xs-right">
-                                    <input type="submit" class="btn btn-rounded btn-info mb-5" value="Submit" />
+                                    <input type="submit" class="btn btn-rounded btn-info mb-5" value="Update" />
                                 </div>
                             </form>
 

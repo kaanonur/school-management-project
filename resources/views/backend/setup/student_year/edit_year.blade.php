@@ -18,7 +18,7 @@
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="form-group">
-                                                    <h5>Student Class Name <span class="text-danger">*</span></h5>
+                                                    <h5>Student Year <span class="text-danger">*</span></h5>
                                                     <div class="controls">
                                                         <input type="number" name="name" class="form-control" value="{{ $studentYear->name }}">
                                                     </div>
