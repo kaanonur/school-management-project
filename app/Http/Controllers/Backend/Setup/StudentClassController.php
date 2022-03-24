@@ -12,12 +12,12 @@ class StudentClassController extends Controller
     {
         $data['allData'] = StudentClass::all();
 
-        return view('backend.setup.student.view_class', compact('data'));
+        return view('backend.setup.student_class.view_class', compact('data'));
     }
 
     public function create()
     {
-        return view('backend.setup.student.add_class');
+        return view('backend.setup.student_class.add_class');
     }
 
     public function store(Request $request)
@@ -32,12 +32,12 @@ class StudentClassController extends Controller
         $notification['message'] = 'Student Class Added Succesfully';
         $notification['alert_type'] = 'success';
 
-        return redirect()->route('student.class.view')->with($notification);
+        return redirect()->route('student_class.class.view')->with($notification);
     }
 
     public function edit(StudentClass $studentClass)
     {
-        return view('backend.setup.student.edit_class', compact('studentClass'));
+        return view('backend.setup.student_class.edit_class', compact('studentClass'));
     }
 
     public function update(Request $request, StudentClass $studentClass)
@@ -52,7 +52,7 @@ class StudentClassController extends Controller
         $notification['message'] = 'Student Class Updated Succesfully';
         $notification['alert_type'] = 'success';
 
-        return redirect()->route('student.class.view')->with($notification);
+        return redirect()->route('student_class.class.view')->with($notification);
     }
 
     public function destroy(StudentClass $studentClass)

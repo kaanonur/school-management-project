@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\Setup\StudentClassController;
+use App\Http\Controllers\Backend\Setup\StudentYearController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Backend\UserController;
@@ -45,12 +46,21 @@ Route::prefix('profile')->group(function () {
     Route::post('password/update', [ProfileController::class, 'passwordUpdate'])->name('password.update');
 });
 
-// Student Class
+
 Route::prefix('setups')->group(function () {
+    // Student Class Routes
     Route::get('student/class/view', [StudentClassController::class, 'index'])->name('student.class.view');
     Route::get('student/class/create', [StudentClassController::class, 'create'])->name('student.class.create');
     Route::post('student/class/store', [StudentClassController::class, 'store'])->name('student.class.store');
     Route::get('student/class/edit/{studentClass}', [StudentClassController::class, 'edit'])->name('student.class.edit');
     Route::post('student/class/update/{studentClass}', [StudentClassController::class, 'update'])->name('student.class.update');
     Route::get('student/class/delete/{studentClass}', [StudentClassController::class, 'destroy'])->name('student.class.delete');
+
+    // Student Year Routes
+    Route::get('student/year/view', [StudentYearController::class, 'index'])->name('student.year.view');
+    Route::get('student/year/create', [StudentYearController::class, 'create'])->name('student.year.create');
+    Route::post('student/year/store', [StudentYearController::class, 'store'])->name('student.year.store');
+    Route::get('student/year/edit/{studentYear}', [StudentYearController::class, 'edit'])->name('student.year.edit');
+    Route::post('student/year/update/{studentYear}', [StudentYearController::class, 'update'])->name('student.year.update');
+    Route::get('student/year/delete/{studentYear}', [StudentYearController::class, 'destroy'])->name('student.year.delete');
 });

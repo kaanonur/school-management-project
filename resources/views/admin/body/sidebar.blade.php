@@ -62,7 +62,8 @@
             </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li class="{{ $route == 'student.class.create' ? 'active' : '' }}"><a href="{{ route('student.class.create') }}"><i class="ti-more"></i>Student Class</a></li>
+                    <li class="{{ $route == 'student.class.view' ? 'active' : '' }}"><a href="{{ route('student.class.view') }}"><i class="ti-more"></i>Student Class</a></li>
+                    <li class="{{ $route == 'student.year.view' ? 'active' : '' }}"><a href="{{ route('student.year.view') }}"><i class="ti-more"></i>Student Year</a></li>
                 </ul>
             </li>
 
