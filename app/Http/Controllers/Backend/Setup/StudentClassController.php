@@ -32,7 +32,7 @@ class StudentClassController extends Controller
         $notification['message'] = 'Student Class Added Succesfully';
         $notification['alert_type'] = 'success';
 
-        return redirect()->route('student_class.class.view')->with($notification);
+        return redirect()->route('student.class.view')->with($notification);
     }
 
     public function edit(StudentClass $studentClass)
@@ -52,7 +52,7 @@ class StudentClassController extends Controller
         $notification['message'] = 'Student Class Updated Succesfully';
         $notification['alert_type'] = 'success';
 
-        return redirect()->route('student_class.class.view')->with($notification);
+        return redirect()->route('student.class.view')->with($notification);
     }
 
     public function destroy(StudentClass $studentClass)

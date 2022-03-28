@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Backend\DashboardController;
+use App\Http\Controllers\Backend\Setup\AssignSubjectController;
 use App\Http\Controllers\Backend\Setup\ExamTypeController;
 use App\Http\Controllers\Backend\Setup\FeeAmountController;
 use App\Http\Controllers\Backend\Setup\FeeCategoryController;
@@ -117,4 +118,12 @@ Route::prefix('setups')->group(function () {
     Route::get('school/subject/edit/{schoolSubject}', [SchoolSubjectController::class, 'edit'])->name('school.subject.edit');
     Route::post('school/subject/update/{schoolSubject}', [SchoolSubjectController::class, 'update'])->name('school.subject.update');
     Route::get('school/subject/delete/{schoolSubject}', [SchoolSubjectController::class, 'destroy'])->name('school.subject.delete');
+
+    // Assign Subject Routes
+    Route::get('assign/subject/view', [AssignSubjectController::class, 'index'])->name('assign.subject.view');
+    Route::get('assign/subject/create', [AssignSubjectController::class, 'create'])->name('assign.subject.create');
+    Route::post('assign/subject/store', [AssignSubjectController::class, 'store'])->name('assign.subject.store');
+    Route::get('assign/subject/edit/{studentClass}', [AssignSubjectController::class, 'edit'])->name('assign.subject.edit');
+    Route::post('assign/subject/update/{studentClass}', [AssignSubjectController::class, 'update'])->name('assign.subject.update');
+    Route::get('assign/subject/details/{studentClass}', [AssignSubjectController::class, 'show'])->name('assign.subject.detail');
 });
