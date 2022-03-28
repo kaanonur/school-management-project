@@ -31,14 +31,6 @@
                                             <td width="12%">{{ $detail->amount }}</td>
                                         </tr>
                                     @endforeach
-
-                                    <tfoot>
-                                    <tr>
-                                        <th>SL</th>
-                                        <th>Class Name</th>
-                                        <th>Amount</th>
-                                    </tr>
-                                    </tfoot>
                                 </table>
                             </div>
                         </div>

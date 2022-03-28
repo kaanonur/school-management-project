@@ -8,8 +8,8 @@
                 <div class="col-12">
                     <div class="box">
                         <div class="box-header with-border d-flex justify-content-between">
-                            <h3 class="box-title">Student Fee Amount List</h3>
-                            <a href="{{ route('fee.amount.create') }}" class="btn btn-rounded btn-success mb-5">Add Fee Amount</a>
+                            <h3 class="box-title">Exam Type List</h3>
+                            <a href="{{ route('exam.type.create') }}" class="btn btn-rounded btn-success mb-5">Add Exam Type</a>
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body">
@@ -18,19 +18,19 @@
                                     <thead>
                                     <tr>
                                         <th>SL</th>
-                                        <th>Fee Category</th>
+                                        <th>Name</th>
                                         <th>Action</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach($data['allData'] as $key => $amount)
+                                    @foreach($data['allData'] as $key => $examType)
                                         <tr>
                                             <td width="5%">{{ $key + 1 }}</td>
-                                            <td>{{ $amount->feeCategory->name }}</td>
+                                            <td>{{ $examType->name }}</td>
                                             <td width="12%">
-                                                <div class="text-center">
-                                                    <a href="{{ route('fee.amount.edit', $amount->fee_category_id) }}" class="btn btn-info">Edit</a>
-                                                    <a href="{{ route('fee.amount.detail', $amount->fee_category_id) }}" class="btn btn-primary">Detail</a>
+                                                <div class="d-flex justify-content-between">
+                                                    <a href="{{ route('exam.type.edit', $examType->id) }}" class="btn btn-info">Edit</a>
+                                                    <a id="delete" href="{{ route('exam.type.delete', $examType->id) }}" class="btn btn-danger">Delete</a>
                                                 </div>
                                             </td>
                                         </tr>
@@ -39,7 +39,7 @@
                                     <tfoot>
                                     <tr>
                                         <th>SL</th>
-                                        <th>Fee Category</th>
+                                        <th>Name</th>
                                         <th>Action</th>
                                     </tr>
                                     </tfoot>
