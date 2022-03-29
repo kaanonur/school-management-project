@@ -5,8 +5,8 @@
         <section class="content">
             <div class="box">
                 <div class="box-header with-border">
-                    <h4 class="box-title">Form Validation</h4>
-                    <h6 class="box-subtitle">Bootstrap Form Validation check the <a class="text-warning" href="http://reactiveraven.github.io/jqBootstrapValidation/">official website </a></h6>
+                    <h4 class="box-title">Add User</h4>
+{{--                    <h6 class="box-subtitle">Bootstrap Form Validation check the <a class="text-warning" href="http://reactiveraven.github.io/jqBootstrapValidation/">official website </a></h6>--}}
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
@@ -21,10 +21,10 @@
                                                 <div class="form-group">
                                                     <h5>User Role <span class="text-danger">*</span></h5>
                                                     <div class="controls">
-                                                        <select name="usertype" id="usertype" class="form-control">
+                                                        <select name="role" id="role" class="form-control">
                                                             <option value="" selected="" disabled="">Select Role</option>
                                                             <option value="Admin">Admin</option>
-                                                            <option value="User">User</option>
+                                                            <option value="Operator">Operator</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -47,15 +47,15 @@
                                                     {{--                                                    <div class="form-control-feedback"><small>Add <code>required</code> attribute to field for required validation.</small></div>--}}
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <h5>User Password <span class="text-danger">*</span></h5>
-                                                    <div class="controls">
-                                                        <input type="password" name="password" class="form-control">
-                                                    </div>
-                                                    {{--                                                    <div class="form-control-feedback"><small>Add <code>required</code> attribute to field for required validation.</small></div>--}}
-                                                </div>
-                                            </div>
+{{--                                            <div class="col-md-6">--}}
+{{--                                                <div class="form-group">--}}
+{{--                                                    <h5>User Password <span class="text-danger">*</span></h5>--}}
+{{--                                                    <div class="controls">--}}
+{{--                                                        <input type="password" name="password" class="form-control">--}}
+{{--                                                    </div>--}}
+{{--                                                    --}}{{--                                                    <div class="form-control-feedback"><small>Add <code>required</code> attribute to field for required validation.</small></div>--}}
+{{--                                                </div>--}}
+{{--                                            </div>--}}
                                         </div>
                                     </div>
                                 </div>

@@ -13,7 +13,7 @@ class UserController extends Controller
 {
     public function index()
     {
-        $data['allData'] = User::all();
+        $data['allData'] = User::where('usertype', 'Admin')->get();
         return view('backend.user.view_user', compact('data'));
     }
 
@@ -24,12 +24,16 @@ class UserController extends Controller
 
     public function store(UserStoreRequest $request)
     {
-        User::create([
-            'usertype' => $request->usertype,
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password)
-        ]);
+        $code = rand(0000,9999);
+
+        $user = new User();
+        $user->usertype = 'Admin';
+        $user->role = $request->role;
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = Hash::make($code);
+        $user->code = $code;
+        $user->save();
 
         $notification = [];
         $notification['message'] = 'User Added Succesfully';
@@ -45,7 +49,7 @@ class UserController extends Controller
 
     public function update(UpdateUserRequest $request, User $user)
     {
-        $user->usertype = $request->usertype;
+        $user->role = $request->role;
         $user->name = $request->name;
         $user->email = $request->email;
         $user->save();

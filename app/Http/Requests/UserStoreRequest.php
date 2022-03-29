@@ -25,10 +25,9 @@ class UserStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'usertype' => 'required',Rule::in(['Admin', 'User']),
+            'role' => 'required',Rule::in(['Admin', 'Operator']),
             'email' => 'required', Rule::unique('users'),
             'name' => 'required',
-            'password' => 'required',
         ];
     }
 }

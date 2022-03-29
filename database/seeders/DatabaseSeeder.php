@@ -26,8 +26,15 @@ class DatabaseSeeder extends Seeder
             'mobile' => '+905555555555',
             'address' => 'test address',
             'gender' => 'Male',
-            'status' => rand(0,1),
+            'role' => 'admin',
+            'status' => 1,
         ]);
-         User::factory(10)->create();
+        User::factory(10)->create();
+        $this->call(StudentClassesTableSeeder::class);
+        $this->call(StudentYearsTableSeeder::class);
+        $this->call(StudentGroupsTableSeeder::class);
+        $this->call(StudentShiftsTableSeeder::class);
+        $this->call(FeeCategoriesTableSeeder::class);
+        $this->call(DesignationsTableSeeder::class);
     }
 }

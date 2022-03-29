@@ -21,6 +21,7 @@
                                         <th>Role</th>
                                         <th>Name</th>
                                         <th>Email</th>
+                                        <th>Code</th>
                                         <th>Action</th>
                                     </tr>
                                     </thead>
@@ -28,9 +29,10 @@
                                     @foreach($data['allData'] as $key => $user)
                                         <tr>
                                             <td width="5%">{{ $key + 1 }}</td>
-                                            <td>{{ $user->usertype }}</td>
+                                            <td>{{ $user->role }}</td>
                                             <td>{{ $user->name }}</td>
                                             <td>{{ $user->email }}</td>
+                                            <td>{{ $user->code }}</td>
                                             <td width="12%">
                                                 <div class="d-flex justify-content-between">
                                                     <a href="{{ route('user.edit', $user->id) }}" class="btn btn-info">Edit</a>

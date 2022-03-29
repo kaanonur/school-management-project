@@ -28,19 +28,21 @@
                 </a>
             </li>
 
-            <li class="treeview {{ $prefix == '/users' ? 'active' : '' }}">
-                <a href="#">
-                    <i data-feather="message-circle"></i>
-                    <span>Manage User</span>
-                    <span class="pull-right-container">
-              <i class="fa fa-angle-right pull-right"></i>
-            </span>
-                </a>
-                <ul class="treeview-menu">
-                    <li class="{{ $route == 'user.view' ? 'active' : '' }}"><a href="{{ route('user.view') }}"><i class="ti-more"></i>View user</a></li>
-                    <li class="{{ $route == 'user.create' ? 'active' : '' }}"><a href="{{ route('user.create') }}"><i class="ti-more"></i>Add User</a></li>
-                </ul>
-            </li>
+            @if(\Illuminate\Support\Facades\Auth::user()->role == 'Admin')
+                <li class="treeview {{ $prefix == '/users' ? 'active' : '' }}">
+                    <a href="#">
+                        <i data-feather="message-circle"></i>
+                        <span>Manage User</span>
+                        <span class="pull-right-container">
+                  <i class="fa fa-angle-right pull-right"></i>
+                </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li class="{{ $route == 'user.view' ? 'active' : '' }}"><a href="{{ route('user.view') }}"><i class="ti-more"></i>View user</a></li>
+                        <li class="{{ $route == 'user.create' ? 'active' : '' }}"><a href="{{ route('user.create') }}"><i class="ti-more"></i>Add User</a></li>
+                    </ul>
+                </li>
+            @endif
 
             <li class="treeview {{ $prefix == '/profile' ? 'active' : '' }}">
                 <a href="#">
@@ -72,6 +74,18 @@
                     <li class="{{ $route == 'school.subject.view' ? 'active' : '' }}"><a href="{{ route('school.subject.view') }}"><i class="ti-more"></i>School Subject</a></li>
                     <li class="{{ $route == 'assign.subject.view' ? 'active' : '' }}"><a href="{{ route('assign.subject.view') }}"><i class="ti-more"></i>Assign Subject</a></li>
                     <li class="{{ $route == 'designation.view' ? 'active' : '' }}"><a href="{{ route('designation.view') }}"><i class="ti-more"></i>Designation</a></li>
+                </ul>
+            </li>
+
+            <li class="treeview {{ $prefix == '/students' ? 'active' : '' }}">
+                <a href="#">
+                    <i data-feather="mail"></i> <span>Student Management</span>
+                    <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li class="{{ $route == 'student.registration.view' ? 'active' : '' }}"><a href="{{ route('student.registration.view') }}"><i class="ti-more"></i>Student Registration</a></li>
                 </ul>
             </li>
 
