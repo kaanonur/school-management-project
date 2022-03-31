@@ -6,13 +6,13 @@
         <section class="content">
             <div class="box">
                 <div class="box-header with-border">
-                    <h4 class="box-title">Add Student</h4>
+                    <h4 class="box-title">Edit Student</h4>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
                     <div class="row">
                         <div class="col">
-                            <form method="POST" action="{{ route('student.registration.store') }}" enctype="multipart/form-data">
+                            <form method="POST" action="{{ route('student.registration.update', $assignStudent->id) }}" enctype="multipart/form-data">
                                 @csrf
                                 <div class="row">
                                     <div class="col-12">
@@ -21,21 +21,18 @@
                                                 <div class="form-group">
                                                     <h5>Student Name <span class="text-danger">*</span></h5>
                                                     <div class="controls">
-                                                        <input type="text" name="name" class="form-control" value="{{ old('name') }}">
+                                                        <input type="text" name="name" class="form-control" value="{{ $data['editData']->student->name }}">
                                                     </div>
-                                                    @error('name')
-                                                    <div class="form-control-feedback text-danger">{{ $message }}</small></div>
-                                                    @enderror
+                                                    {{--                                                    @error('name')--}}
+                                                    {{--                                                    <div class="form-control-feedback text-danger">{{ $message }}</small></div>--}}
+                                                    {{--                                                    @enderror--}}
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <h5>Father's Name <span class="text-danger">*</span></h5>
                                                     <div class="controls">
-                                                        <input type="text" name="father_name" class="form-control" value="{{ old('father_name') }}">
-                                                        @error('father_name')
-                                                        <div class="form-control-feedback text-danger">{{ $message }}</small></div>
-                                                        @enderror
+                                                        <input type="text" name="father_name" class="form-control" value="{{ $data['editData']->student->father_name }}">
                                                     </div>
                                                 </div>
                                             </div>
@@ -43,10 +40,7 @@
                                                 <div class="form-group">
                                                     <h5>Mother's Name <span class="text-danger">*</span></h5>
                                                     <div class="controls">
-                                                        <input type="text" name="mother_name" class="form-control" value="{{ old('mother_name') }}">
-                                                        @error('mother_name')
-                                                        <div class="form-control-feedback text-danger">{{ $message }}</small></div>
-                                                        @enderror
+                                                        <input type="text" name="mother_name" class="form-control" value="{{ $data['editData']->student->mother_name }}">
                                                     </div>
                                                 </div>
                                             </div>
@@ -56,10 +50,7 @@
                                                 <div class="form-group">
                                                     <h5>Mobile Number<span class="text-danger">*</span></h5>
                                                     <div class="controls">
-                                                        <input type="text" name="mobile" class="form-control" value="{{ old('mobile') }}">
-                                                        @error('mobile')
-                                                        <div class="form-control-feedback text-danger">{{ $message }}</small></div>
-                                                        @enderror
+                                                        <input type="text" name="mobile" class="form-control" value="{{ $data['editData']->student->mobile }}">
                                                     </div>
                                                 </div>
                                             </div>
@@ -67,10 +58,7 @@
                                                 <div class="form-group">
                                                     <h5>Address <span class="text-danger">*</span></h5>
                                                     <div class="controls">
-                                                        <input type="text" name="address" class="form-control" value="{{ old('address') }}">
-                                                        @error('address')
-                                                        <div class="form-control-feedback text-danger">{{ $message }}</small></div>
-                                                        @enderror
+                                                        <input type="text" name="address" class="form-control" value="{{ $data['editData']->student->address }}">
                                                     </div>
                                                 </div>
                                             </div>
@@ -79,13 +67,9 @@
                                                     <h5>Gender <span class="text-danger">*</span></h5>
                                                     <div class="controls">
                                                         <select name="gender" id="gender" class="form-control">
-                                                            <option value="" selected="" disabled="">Select Gender</option>
-                                                            <option value="Male">Male</option>
-                                                            <option value="Female">Female</option>
+                                                            <option value="Male" {{ @$data['editData']->student->gender == 'Male' ? 'selected' : '' }}>Male</option>
+                                                            <option value="Female" {{ @$data['editData']->student->gender == 'Female' ? 'selected' : '' }}>Female</option>
                                                         </select>
-                                                        @error('gender')
-                                                        <div class="form-control-feedback text-danger">{{ $message }}</small></div>
-                                                        @enderror
                                                     </div>
                                                 </div>
                                             </div>
@@ -95,10 +79,7 @@
                                                 <div class="form-group">
                                                     <h5>Date of Birth<span class="text-danger">*</span></h5>
                                                     <div class="controls">
-                                                        <input type="date" name="dob" class="form-control" value="{{ old('dob') }}">
-                                                        @error('dob')
-                                                        <div class="form-control-feedback text-danger">{{ $message }}</small></div>
-                                                        @enderror
+                                                        <input type="date" name="dob" class="form-control" value="{{ $data['editData']->student->dob }}">
                                                     </div>
                                                 </div>
                                             </div>
@@ -106,10 +87,7 @@
                                                 <div class="form-group">
                                                     <h5>Discount<span class="text-danger">*</span></h5>
                                                     <div class="controls">
-                                                        <input type="text" name="discount" class="form-control" value="{{ old('discount') }}">
-                                                        @error('discount')
-                                                        <div class="form-control-feedback text-danger">{{ $message }}</small></div>
-                                                        @enderror
+                                                        <input type="text" name="discount" class="form-control" value="{{ $data['editData']->discount->discount }}">
                                                     </div>
                                                 </div>
                                             </div>
@@ -122,12 +100,11 @@
                                                         <select name="year_id" id="year_id" class="form-control">
                                                             <option value="" selected="" disabled="">Select Year</option>
                                                             @foreach($data['years'] as $year)
-                                                                <option value="{{ $year->id }}">{{ $year->name }}</option>
+                                                                <option value="{{ $year->id }}" {{ @$data['editData']->year_id == $year->id ? 'selected' : '' }}>
+                                                                    {{ $year->name }}
+                                                                </option>
                                                             @endforeach
                                                         </select>
-                                                        @error('year_id')
-                                                        <div class="form-control-feedback text-danger">{{ $message }}</small></div>
-                                                        @enderror
                                                     </div>
                                                 </div>
                                             </div>
@@ -138,12 +115,11 @@
                                                         <select name="class_id" id="class_id" class="form-control">
                                                             <option value="" selected="" disabled="">Select Class</option>
                                                             @foreach($data['classes'] as $class)
-                                                                <option value="{{ $class->id }}">{{ $class->name }}</option>
+                                                                <option value="{{ $class->id }}" {{ @$data['editData']->class_id == $class->id ? 'selected' : '' }}>
+                                                                    {{ $class->name }}
+                                                                </option>
                                                             @endforeach
                                                         </select>
-                                                        @error('class_id')
-                                                        <div class="form-control-feedback text-danger">{{ $message }}</small></div>
-                                                        @enderror
                                                     </div>
                                                 </div>
                                             </div>
@@ -154,12 +130,11 @@
                                                         <select name="group_id" id="group_id" class="form-control">
                                                             <option value="" selected="" disabled="">Select Group</option>
                                                             @foreach($data['groups'] as $group)
-                                                                <option value="{{ $group->id }}">{{ $group->name }}</option>
+                                                                <option value="{{ $group->id }}" {{ @$data['editData']->group_id == $group->id ? 'selected' : '' }}>
+                                                                    {{ $group->name }}
+                                                                </option>
                                                             @endforeach
                                                         </select>
-                                                        @error('group_id')
-                                                        <div class="form-control-feedback text-danger">{{ $message }}</small></div>
-                                                        @enderror
                                                     </div>
                                                 </div>
                                             </div>
@@ -172,12 +147,11 @@
                                                         <select name="shift_id" id="shift_id" class="form-control">
                                                             <option value="" selected="" disabled="">Select Shift</option>
                                                             @foreach($data['shifts'] as $shift)
-                                                                <option value="{{ $shift->id }}">{{ $shift->name }}</option>
+                                                                <option value="{{ $shift->id }}" {{ @$data['editData']->shift_id == $shift->id ? 'selected' : '' }}>
+                                                                    {{ $shift->name }}
+                                                                </option>
                                                             @endforeach
                                                         </select>
-                                                        @error('shift_id')
-                                                        <div class="form-control-feedback text-danger">{{ $message }}</small></div>
-                                                        @enderror
                                                     </div>
                                                 </div>
                                             </div>
@@ -192,7 +166,17 @@
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <div class="controls">
-                                                        <img id="showImage" class="rounded-circle" src="{{ asset('backend/images/no-image.png') }}" width="100px" height="100px" alt="User Avatar">
+                                                        @if($data['editData']->student->image == null)
+                                                            @if($data['editData']->student->gender == 'Male')
+                                                                <img id="showImage" class="rounded-circle" width="100px" height="100px" src="{{ asset('backend/images/avatar/avatar-1.png') }}" alt="">
+                                                            @elseif($data['editData']->student->gender == 'Female')
+                                                                <img id="showImage" class="rounded-circle" width="100px" height="100px" src="{{ asset('backend/images/avatar/avatar-2.png') }}" alt="">
+                                                            @else
+                                                                <img id="showImage" class="rounded-circle" width="100px" height="100px" src="{{ asset('backend/images/avatar/1.jpg') }}" alt="">
+                                                            @endif
+                                                        @else
+                                                            <img id="showImage" class="rounded-circle" width="100px" height="100px" src="{{ asset('upload/student_images/'.$data['editData']->student->image) }}" alt="">
+                                                        @endif
                                                     </div>
                                                 </div>
                                             </div>

@@ -6,45 +6,47 @@
         <section class="content">
             <div class="row">
 
-                <div class="box bb-3 border-warning">
-                    <div class="box-header">
-                        <h4 class="box-title">Student <strong>Search</strong></h4>
-                    </div>
+                <div class="col-md-12">
+                    <div class="box bb-3 border-warning">
+                        <div class="box-header">
+                            <h4 class="box-title">Student <strong>Search</strong></h4>
+                        </div>
 
-                    <div class="box-body">
-                        <form method="" action="">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <h5>Year</h5>
-                                        <div class="controls">
-                                            <select name="year_id" id="year_id" class="form-control">
-                                                <option value="" selected="" disabled="">Select Year</option>
-                                                @foreach($data['years'] as $year)
-                                                    <option value="{{ $year->id }}">{{ $year->name }}</option>
-                                                @endforeach
-                                            </select>
+                        <div class="box-body">
+                            <form method="GET" action="{{ route('student.year.class.wise') }}">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <h5>Year</h5>
+                                            <div class="controls">
+                                                <select name="year_id" id="year_id" class="form-control">
+                                                    <option value="" selected="" disabled="">Select Year</option>
+                                                    @foreach($data['years'] as $year)
+                                                        <option value="{{ $year->id }}" {{ @$data['year_id'] == $year->id ? 'selected' : '' }}>{{ $year->name }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <h5>Class</h5>
-                                        <div class="controls">
-                                            <select name="class_id" id="class_id" class="form-control">
-                                                <option value="" selected="" disabled="">Select Class</option>
-                                                @foreach($data['classes'] as $class)
-                                                    <option value="{{ $class->id }}">{{ $class->name }}</option>
-                                                @endforeach
-                                            </select>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <h5>Class</h5>
+                                            <div class="controls">
+                                                <select name="class_id" id="class_id" class="form-control">
+                                                    <option value="" selected="" disabled="">Select Class</option>
+                                                    @foreach($data['classes'] as $class)
+                                                        <option value="{{ $class->id }}" {{ @$data['class_id'] == $class->id ? 'selected' : '' }}>{{ $class->name }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
                                         </div>
                                     </div>
+                                    <div style="padding-top: 25px;" class="col-md-4">
+                                        <input type="submit" class="btn btn-rounded btn-dark mb-5" name="search" value="Search">
+                                    </div>
                                 </div>
-                                <div style="padding-top: 25px;" class="col-md-4">
-                                    <input type="submit" class="btn btn-rounded btn-dark mb-5" name="search" value="Search">
-                                </div>
-                            </div>
-                        </form>
+                            </form>
+                        </div>
                     </div>
                 </div>
 
@@ -63,6 +65,13 @@
                                         <th>SL</th>
                                         <th>Name</th>
                                         <th>ID No</th>
+                                        <th>Roll</th>
+                                        <th>Year</th>
+                                        <th>Class</th>
+                                        <th>Image</th>
+                                        @if(\Illuminate\Support\Facades\Auth::user()->role == 'Admin')
+                                            <th>Code</th>
+                                        @endif
                                         <th>Action</th>
                                     </tr>
                                     </thead>
@@ -70,12 +79,31 @@
                                     @foreach($data['allData'] as $key => $value)
                                         <tr>
                                             <td width="5%">{{ $key + 1 }}</td>
-                                            <td>{{ $value->class_id }}</td>
-                                            <td>{{ $value->year_id }}</td>
+                                            <td>{{ $value->student->name }}</td>
+                                            <td>{{ $value->student->id_no }}</td>
+                                            <td>{{ '' }}</td>
+                                            <td>{{ $value->studentYear->name }}</td>
+                                            <td>{{ $value->studentClass->name }}</td>
+                                            <td>
+                                                @if($value->student->image == null)
+                                                    @if($value->student->gender == 'Male')
+                                                        <img class="rounded-circle" width="60px" height="60px" src="{{ asset('backend/images/avatar/avatar-1.png') }}" alt="">
+                                                    @elseif($value->student->gender == 'Female')
+                                                        <img class="rounded-circle" width="60px" height="60px" src="{{ asset('backend/images/avatar/avatar-2.png') }}" alt="">
+                                                    @else
+                                                        <img class="rounded-circle" width="60px" height="60px" src="{{ asset('backend/images/avatar/1.jpg') }}" alt="">
+                                                    @endif
+                                                @else
+                                                    <img class="rounded-circle" width="60px" height="60px" src="{{ asset('upload/student_images/'.$value->student->image) }}" alt="">
+                                                @endif
+                                            </td>
+                                            @if(\Illuminate\Support\Facades\Auth::user()->role == 'Admin')
+                                                <td>{{ $value->student->code }}</td>
+                                            @endif
                                             <td width="12%">
                                                 <div class="d-flex justify-content-between">
-                                                    <a href="" class="btn btn-info">Edit</a>
-                                                    <a id="delete" href="" class="btn btn-danger">Delete</a>
+                                                    <a href="{{ route('student.registration.edit', $value->id) }}" class="btn btn-info">Edit</a>
+                                                    <a id="delete" href="{{ route('student.registration.delete', $value->id) }}" class="btn btn-danger">Delete</a>
                                                 </div>
                                             </td>
                                         </tr>
