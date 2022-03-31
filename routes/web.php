@@ -143,6 +143,7 @@ Route::prefix('students')->group(function () {
     Route::get('registration/view', [StudentRegistrationController::class, 'index'])->name('student.registration.view');
     Route::get('registration/add', [StudentRegistrationController::class, 'create'])->name('student.registration.create');
     Route::post('registration/store', [StudentRegistrationController::class, 'store'])->name('student.registration.store');
+    Route::get('registration/details/{assignStudent}', [StudentRegistrationController::class, 'show'])->name('student.registration.show');
     Route::get('registration/edit/{assignStudent}', [StudentRegistrationController::class, 'edit'])->name('student.registration.edit');
     Route::post('registration/update/{assignStudent}', [StudentRegistrationController::class, 'update'])->name('student.registration.update');
     Route::get('registration/delete/{assignStudent}', [StudentRegistrationController::class, 'destroy'])->name('student.registration.delete');

@@ -15,6 +15,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use PDF;
 
 class StudentRegistrationController extends Controller
 {
@@ -112,6 +113,13 @@ class StudentRegistrationController extends Controller
         return redirect()->route('student.registration.view')->with($notification);
     }
 
+    public function show(AssignStudent $assignStudent)
+    {
+        $data['detail'] = AssignStudent::where('id', $assignStudent->id)->with(['student', 'discount'])->first();
+
+        $this->generate_pdf($data);
+    }
+
     public function edit(AssignStudent $assignStudent)
     {
         $data['years'] = StudentYear::all();
@@ -205,5 +213,11 @@ class StudentRegistrationController extends Controller
         $data['allData'] = AssignStudent::where('year_id', $data['year_id'])->where('class_id', $data['class_id'])->get();
 
         return view('backend.student.student_registration.view', compact('data'));
+    }
+
+    function generate_pdf($data) {
+        $pdf = PDF::loadView('backend.student.student_registration.details_pdf', compact('data'));
+        $pdf->SetProtection(['copy', 'print'], '', 'pass');
+        return $pdf->stream('document.pdf');
     }
 }
