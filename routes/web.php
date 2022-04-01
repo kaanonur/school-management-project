@@ -11,6 +11,7 @@ use App\Http\Controllers\Backend\Setup\StudentClassController;
 use App\Http\Controllers\Backend\Setup\StudentGroupController;
 use App\Http\Controllers\Backend\Setup\StudentShiftController;
 use App\Http\Controllers\Backend\Setup\StudentYearController;
+use App\Http\Controllers\Backend\Student\RegistrationFeeController;
 use App\Http\Controllers\Backend\Student\StudentRegistrationController;
 use App\Http\Controllers\Backend\Student\StudentRollController;
 use Illuminate\Support\Facades\Route;
@@ -150,14 +151,15 @@ Route::prefix('students')->group(function () {
     Route::get('registration/delete/{assignStudent}', [StudentRegistrationController::class, 'destroy'])->name('student.registration.delete');
     Route::get('year/class/wise', [StudentRegistrationController::class, 'search'])->name('student.year.class.wise');
 
-    // Designation Routes
+    // Roll Generate Routes
     Route::get('roll/generate/view', [StudentRollController::class, 'index'])->name('roll.generate.view');
     Route::get('roll/generate/getStudents', [StudentRollController::class, 'getStudents'])->name('student.registration.getStudents');
     Route::post('roll/generate/store', [StudentRollController::class, 'store'])->name('roll.generate.store');
-//Route::get('roll/generate/edit/{designation}', [StudentRollController::class, 'edit'])->name('designation.edit');
-//Route::post('roll/generate/update/{designation}', [StudentRollController::class, 'update'])->name('designation.update');
-//Route::get('roll/generate/delete/{designation}', [StudentRollController::class, 'destroy'])->name('designation.delete');
 
+    // Registration Fee Routes
+    Route::get('registration/fee/view', [RegistrationFeeController::class, 'index'])->name('registration.fee.view');
+    Route::get('registration/fee/classWiseData', [RegistrationFeeController::class, 'getRegFeeClassWise'])->name('student.registration.fee.classwise.get');
+    Route::get('registration/fee/paySlip', [RegistrationFeeController::class, 'paySlip'])->name('student.registration.fee.paySlip');
 });
 
 

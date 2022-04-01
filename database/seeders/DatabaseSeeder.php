@@ -36,5 +36,6 @@ class DatabaseSeeder extends Seeder
         $this->call(StudentShiftsTableSeeder::class);
         $this->call(FeeCategoriesTableSeeder::class);
         $this->call(DesignationsTableSeeder::class);
+        $this->call(FeeCategoryAmountsTableSeeder::class);
     }
 }
