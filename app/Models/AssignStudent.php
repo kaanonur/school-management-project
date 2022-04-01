@@ -30,4 +30,14 @@ class AssignStudent extends Model
     {
         return $this->belongsTo(StudentYear::class, 'year_id', 'id');
     }
+
+    public function studentGroup()
+    {
+        return $this->belongsTo(StudentGroup::class, 'group_id', 'id');
+    }
+
+    public function studentShift()
+    {
+        return $this->belongsTo(StudentShift::class, 'shift_id', 'id');
+    }
 }
