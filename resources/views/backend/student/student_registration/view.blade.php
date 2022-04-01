@@ -81,7 +81,7 @@
                                             <td width="5%">{{ $key + 1 }}</td>
                                             <td>{{ $value->student->name }}</td>
                                             <td>{{ $value->student->id_no }}</td>
-                                            <td>{{ '' }}</td>
+                                            <td>{{ $value->roll }}</td>
                                             <td>{{ $value->studentYear->name }}</td>
                                             <td>{{ $value->studentClass->name }}</td>
                                             <td>

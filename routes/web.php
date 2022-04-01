@@ -12,6 +12,7 @@ use App\Http\Controllers\Backend\Setup\StudentGroupController;
 use App\Http\Controllers\Backend\Setup\StudentShiftController;
 use App\Http\Controllers\Backend\Setup\StudentYearController;
 use App\Http\Controllers\Backend\Student\StudentRegistrationController;
+use App\Http\Controllers\Backend\Student\StudentRollController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Backend\UserController;
@@ -148,4 +149,15 @@ Route::prefix('students')->group(function () {
     Route::post('registration/update/{assignStudent}', [StudentRegistrationController::class, 'update'])->name('student.registration.update');
     Route::get('registration/delete/{assignStudent}', [StudentRegistrationController::class, 'destroy'])->name('student.registration.delete');
     Route::get('year/class/wise', [StudentRegistrationController::class, 'search'])->name('student.year.class.wise');
+
+    // Designation Routes
+    Route::get('roll/generate/view', [StudentRollController::class, 'index'])->name('roll.generate.view');
+    Route::get('roll/generate/getStudents', [StudentRollController::class, 'getStudents'])->name('student.registration.getStudents');
+    Route::post('roll/generate/store', [StudentRollController::class, 'store'])->name('roll.generate.store');
+//Route::get('roll/generate/edit/{designation}', [StudentRollController::class, 'edit'])->name('designation.edit');
+//Route::post('roll/generate/update/{designation}', [StudentRollController::class, 'update'])->name('designation.update');
+//Route::get('roll/generate/delete/{designation}', [StudentRollController::class, 'destroy'])->name('designation.delete');
+
 });
+
+
