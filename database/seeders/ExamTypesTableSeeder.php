@@ -21,24 +21,24 @@ class ExamTypesTableSeeder extends Seeder
         \DB::table('exam_types')->insert(array (
             0 => 
             array (
-                'created_at' => '2022-03-28 06:34:29',
-                'id' => 2,
+                'created_at' => '2022-04-01 13:18:15',
+                'id' => 1,
                 'name' => '1st Terminal Exam',
-                'updated_at' => '2022-03-28 06:34:29',
+                'updated_at' => '2022-04-01 13:18:15',
             ),
             1 => 
             array (
-                'created_at' => '2022-03-28 06:34:36',
-                'id' => 3,
+                'created_at' => '2022-04-01 13:18:22',
+                'id' => 2,
                 'name' => '2nd Terminal Exam',
-                'updated_at' => '2022-03-28 06:34:36',
+                'updated_at' => '2022-04-01 13:18:22',
             ),
             2 => 
             array (
-                'created_at' => '2022-03-28 06:34:43',
-                'id' => 4,
+                'created_at' => '2022-04-01 13:18:30',
+                'id' => 3,
                 'name' => '3rd Terminal Exam',
-                'updated_at' => '2022-03-28 06:34:43',
+                'updated_at' => '2022-04-01 13:18:30',
             ),
         ));
         

@@ -34,13 +34,13 @@
             <p>School Address</p>
             <p>Phone : 343434343434</p>
             <p>Email : support@easylerningbd.com</p>
-            <p> <b> Student Registration Fee</b> </p>
+            <p> <b> Student Monthly Fee</b> </p>
         </td>
     </tr>
 </table>
 
 @php
-    $registrationFee = App\Models\FeeCategoryAmount::where('fee_category_id', 1)->where('class_id', $data['details']->class_id)->first();
+    $registrationFee = App\Models\FeeCategoryAmount::where('fee_category_id', 2)->where('class_id', $data['details']->class_id)->first();
     $originalfee = $registrationFee->amount;
             $discount = $data['details']['discount']['discount'];
             $discounttablefee = $discount/100*$originalfee;
@@ -86,7 +86,7 @@
     </tr>
     <tr>
         <td>7</td>
-        <td><b>Registration Fee</b></td>
+        <td><b>Monthly Fee</b></td>
         <td>{{ $originalfee }} $</td>
     </tr>
     <tr>
@@ -96,7 +96,7 @@
     </tr>
     <tr>
         <td>9</td>
-        <td><b>Fee For this Student </b></td>
+        <td><b>Fee For this Student of {{ $data['month'] }} </b></td>
         <td>{{ $finalfee }} $</td>
     </tr>
 </table>
@@ -143,7 +143,7 @@
     </tr>
     <tr>
         <td>7</td>
-        <td><b>Registration Fee</b></td>
+        <td><b>Monthly Fee</b></td>
         <td>{{ $originalfee }} $</td>
     </tr>
     <tr>
@@ -154,7 +154,7 @@
 
     <tr>
         <td>9</td>
-        <td><b>Fee For this Student </b></td>
+        <td><b>Fee For this Student of {{ $data['month'] }} </b></td>
         <td>{{ $finalfee }} $</td>
     </tr>
 </table>
