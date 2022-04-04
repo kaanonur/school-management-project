@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Backend\DashboardController;
+use App\Http\Controllers\Backend\Employee\EmployeeRegistrationController;
 use App\Http\Controllers\Backend\Setup\AssignSubjectController;
 use App\Http\Controllers\Backend\Setup\DesignationController;
 use App\Http\Controllers\Backend\Setup\ExamTypeController;
@@ -143,7 +144,7 @@ Route::middleware('auth')->group(function () {
         Route::get('designation/delete/{designation}', [DesignationController::class, 'destroy'])->name('designation.delete');
     });
 
-// Student Registration Routes
+    // Student Registration Routes
     Route::prefix('students')->group(function () {
         Route::get('registration/view', [StudentRegistrationController::class, 'index'])->name('student.registration.view');
         Route::get('registration/add', [StudentRegistrationController::class, 'create'])->name('student.registration.create');
@@ -173,6 +174,18 @@ Route::middleware('auth')->group(function () {
         Route::get('exam/fee/view', [ExamFeeController::class, 'index'])->name('exam.fee.view');
         Route::get('exam/fee/classWiseData', [ExamFeeController::class, 'getExamFeeClassWise'])->name('student.exam.fee.classwise.get');
         Route::get('exam/fee/paySlip', [ExamFeeController::class, 'paySlip'])->name('student.exam.fee.paySlip');
+    });
+
+    // Student Registration Routes
+    Route::prefix('employees')->group(function () {
+        Route::get('registration/view', [EmployeeRegistrationController::class, 'index'])->name('employee.registration.view');
+        Route::get('registration/add', [EmployeeRegistrationController::class, 'create'])->name('employee.registration.create');
+//        Route::post('registration/store', [StudentRegistrationController::class, 'store'])->name('employee.registration.store');
+//        Route::get('registration/details/{assignStudent}', [StudentRegistrationController::class, 'show'])->name('employee.registration.show');
+//        Route::get('registration/edit/{assignStudent}', [StudentRegistrationController::class, 'edit'])->name('employee.registration.edit');
+//        Route::post('registration/update/{assignStudent}', [StudentRegistrationController::class, 'update'])->name('employee.registration.update');
+//        Route::get('registration/delete/{assignStudent}', [StudentRegistrationController::class, 'destroy'])->name('employee.registration.delete');
+//        Route::get('year/class/wise', [StudentRegistrationController::class, 'search'])->name('employee.year.class.wise');
     });
 });
 
