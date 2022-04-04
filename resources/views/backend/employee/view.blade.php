@@ -43,10 +43,11 @@
                                             @if(\Illuminate\Support\Facades\Auth::user()->role == 'Admin')
                                                 <td>{{ $employee->code }}</td>
                                             @endif
-                                            <td width="12%">
-                                                <div class="d-flex justify-content-between">
-                                                    <a href="{{ route('employee.registration.edit', $employee->id) }}" class="btn btn-info">Edit</a>
-                                                    <a id="delete" href="{{ route('employee.registration.delete', $employee->id) }}" class="btn btn-danger">Delete</a>
+                                            <td width="19%">
+                                                <div class="text-center">
+                                                    <a href="{{ route('employee.registration.edit', $employee->id) }}" class="btn btn-info"><i class="fa fa-edit"></i></a>
+                                                    <a href="{{ route('employee.registration.show', $employee->id) }}" class="btn btn-primary"><i class="fa fa-eye"></i></a>
+                                                    <a id="delete" href="{{ route('employee.registration.delete', $employee->id) }}" class="btn btn-danger"><i class="fa fa-remove"></i></a>
                                                 </div>
                                             </td>
                                         </tr>

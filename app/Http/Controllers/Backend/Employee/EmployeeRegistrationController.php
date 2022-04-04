@@ -99,6 +99,11 @@ class EmployeeRegistrationController extends Controller
         return redirect()->route('employee.registration.view')->with($notification);
     }
 
+    public function show(User $user)
+    {
+        $this->generate_pdf($user);
+    }
+
     public function edit(User $user)
     {
         $data['designation'] = Designation::all();
@@ -134,6 +139,26 @@ class EmployeeRegistrationController extends Controller
 
     public function destroy(User $user)
     {
+        DB::transaction(function () use($user){
 
+            if ($user->image != null) {
+                @unlink(public_path('upload/employee_images/'. $user->image));
+            }
+            $user->delete();
+            $employeeSalary = EmployeeSalaryLog::where('employee_id', $user->id)->first();
+            $employeeSalary->delete();
+        });
+
+        $notification = [];
+        $notification['message'] = 'Employee Deleted Succesfully';
+        $notification['alert_type'] = 'success';
+
+        return redirect()->route('employee.registration.view')->with($notification);
+    }
+
+    public function generate_pdf($user) {
+        $pdf = PDF::loadView('backend.employee.details_pdf', compact('user'));
+        $pdf->SetProtection(['copy', 'print'], '', 'pass');
+        return $pdf->stream('document.pdf');
     }
 }
