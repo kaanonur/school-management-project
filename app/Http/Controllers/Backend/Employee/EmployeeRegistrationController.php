@@ -19,14 +19,14 @@ class EmployeeRegistrationController extends Controller
     {
         $data['allData'] = User::where('usertype', 'Employee')->get();
 
-        return view('backend.employee.view', compact('data'));
+        return view('backend.employee.employee_registration.view', compact('data'));
     }
 
     public function create()
     {
         $data['designation'] = Designation::all();
 
-        return view('backend.employee.create', compact('data'));
+        return view('backend.employee.employee_registration.create', compact('data'));
     }
 
     public function store(StoreRequest $request)
@@ -108,7 +108,7 @@ class EmployeeRegistrationController extends Controller
     {
         $data['designation'] = Designation::all();
 
-        return view('backend.employee.edit', compact('user', 'data'));
+        return view('backend.employee.employee_registration.edit', compact('user', 'data'));
     }
 
     public function update(UpdateRequest $request, User $user)

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\Employee\EmployeeRegistrationController;
+use App\Http\Controllers\Backend\Employee\EmployeeSalaryController;
 use App\Http\Controllers\Backend\Setup\AssignSubjectController;
 use App\Http\Controllers\Backend\Setup\DesignationController;
 use App\Http\Controllers\Backend\Setup\ExamTypeController;
@@ -176,8 +177,9 @@ Route::middleware('auth')->group(function () {
         Route::get('exam/fee/paySlip', [ExamFeeController::class, 'paySlip'])->name('student.exam.fee.paySlip');
     });
 
-    // Student Registration Routes
+    // Employee Routes
     Route::prefix('employees')->group(function () {
+        // Registration Routes
         Route::get('registration/view', [EmployeeRegistrationController::class, 'index'])->name('employee.registration.view');
         Route::get('registration/add', [EmployeeRegistrationController::class, 'create'])->name('employee.registration.create');
         Route::post('registration/store', [EmployeeRegistrationController::class, 'store'])->name('employee.registration.store');
@@ -185,7 +187,13 @@ Route::middleware('auth')->group(function () {
         Route::get('registration/edit/{user}', [EmployeeRegistrationController::class, 'edit'])->name('employee.registration.edit');
         Route::post('registration/update/{user}', [EmployeeRegistrationController::class, 'update'])->name('employee.registration.update');
         Route::get('registration/delete/{user}', [EmployeeRegistrationController::class, 'destroy'])->name('employee.registration.delete');
-//        Route::get('year/class/wise', [StudentRegistrationController::class, 'search'])->name('employee.year.class.wise');
+
+        // Salary Routes
+        Route::get('salary/view', [EmployeeSalaryController::class, 'index'])->name('employee.salary.view');
+        Route::get('salary/add', [EmployeeSalaryController::class, 'create'])->name('employee.salary.create');
+        Route::get('salary/increment/{user}', [EmployeeSalaryController::class, 'increment'])->name('employee.salary.increment');
+        Route::post('salary/increment/{user}', [EmployeeSalaryController::class, 'update'])->name('employee.salary.update');
+        Route::get('salary/details/{user}', [EmployeeSalaryController::class, 'show'])->name('employee.salary.show');
     });
 });
 
