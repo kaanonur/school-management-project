@@ -112,7 +112,7 @@
                                                                 <option value="{{ $designation->id }}">{{ $designation->name }}</option>
                                                             @endforeach
                                                         </select>
-                                                        @error('year_id')
+                                                        @error('designation_id')
                                                         <div class="form-control-feedback text-danger">{{ $message }}</small></div>
                                                         @enderror
                                                     </div>

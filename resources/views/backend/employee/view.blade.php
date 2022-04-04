@@ -45,8 +45,8 @@
                                             @endif
                                             <td width="12%">
                                                 <div class="d-flex justify-content-between">
-                                                    <a href="{{ route('designation.edit', $employee->id) }}" class="btn btn-info">Edit</a>
-                                                    <a id="delete" href="{{ route('designation.delete', $employee->id) }}" class="btn btn-danger">Delete</a>
+                                                    <a href="{{ route('employee.registration.edit', $employee->id) }}" class="btn btn-info">Edit</a>
+                                                    <a id="delete" href="{{ route('employee.registration.delete', $employee->id) }}" class="btn btn-danger">Delete</a>
                                                 </div>
                                             </td>
                                         </tr>

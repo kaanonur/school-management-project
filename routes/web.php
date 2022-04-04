@@ -180,11 +180,11 @@ Route::middleware('auth')->group(function () {
     Route::prefix('employees')->group(function () {
         Route::get('registration/view', [EmployeeRegistrationController::class, 'index'])->name('employee.registration.view');
         Route::get('registration/add', [EmployeeRegistrationController::class, 'create'])->name('employee.registration.create');
-//        Route::post('registration/store', [StudentRegistrationController::class, 'store'])->name('employee.registration.store');
+        Route::post('registration/store', [EmployeeRegistrationController::class, 'store'])->name('employee.registration.store');
 //        Route::get('registration/details/{assignStudent}', [StudentRegistrationController::class, 'show'])->name('employee.registration.show');
-//        Route::get('registration/edit/{assignStudent}', [StudentRegistrationController::class, 'edit'])->name('employee.registration.edit');
-//        Route::post('registration/update/{assignStudent}', [StudentRegistrationController::class, 'update'])->name('employee.registration.update');
-//        Route::get('registration/delete/{assignStudent}', [StudentRegistrationController::class, 'destroy'])->name('employee.registration.delete');
+        Route::get('registration/edit/{user}', [EmployeeRegistrationController::class, 'edit'])->name('employee.registration.edit');
+        Route::post('registration/update/{user}', [EmployeeRegistrationController::class, 'update'])->name('employee.registration.update');
+        Route::get('registration/delete/{assignStudent}', [EmployeeRegistrationController::class, 'destroy'])->name('employee.registration.delete');
 //        Route::get('year/class/wise', [StudentRegistrationController::class, 'search'])->name('employee.year.class.wise');
     });
 });

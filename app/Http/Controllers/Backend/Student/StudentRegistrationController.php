@@ -138,9 +138,6 @@ class StudentRegistrationController extends Controller
             $checkYear = StudentYear::find($request->year_id)->name;
             $student = User::where('usertype', 'Student')->orderBy('id', 'desc')->first();
 
-
-
-
             $user = User::where('id', $assignStudent->student_id)->first();
 
             $user->name = $request->name;
