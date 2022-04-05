@@ -6,6 +6,7 @@ use App\Http\Controllers\Backend\Employee\EmployeeLeaveController;
 use App\Http\Controllers\Backend\Employee\EmployeeRegistrationController;
 use App\Http\Controllers\Backend\Employee\EmployeeSalaryController;
 use App\Http\Controllers\Backend\Employee\MonthlySalaryController;
+use App\Http\Controllers\Backend\Marks\MarksController;
 use App\Http\Controllers\Backend\Setup\AssignSubjectController;
 use App\Http\Controllers\Backend\Setup\DesignationController;
 use App\Http\Controllers\Backend\Setup\ExamTypeController;
@@ -217,6 +218,13 @@ Route::middleware('auth')->group(function () {
         Route::get('monthly/salary/view', [MonthlySalaryController::class, 'index'])->name('employee.monthly.salary.view');
         Route::get('monthly/salary/get', [MonthlySalaryController::class, 'monthlySalaryGet'])->name('employee.monthly.salary.get');
         Route::get('monthly/salary/paySlip/{user}', [MonthlySalaryController::class, 'paySlip'])->name('employee.monthly.salary.paySlip');
+    });
+
+    // Employee Routes
+    Route::prefix('marks')->group(function () {
+        Route::get('entry/add', [MarksController::class, 'create'])->name('marks.entry.create');
+        Route::get('subjects/get', [MarksController::class, 'getSubjects'])->name('marks.getSubjects');
+        Route::get('getStudents', [MarksController::class, 'getStudents'])->name('student.marks.getStudents');
     });
 });
 

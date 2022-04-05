@@ -21,31 +21,45 @@ class SchoolSubjectsTableSeeder extends Seeder
         \DB::table('school_subjects')->insert(array (
             0 => 
             array (
-                'created_at' => '2022-03-28 07:03:56',
-                'id' => 2,
-                'name' => 'English',
-                'updated_at' => '2022-03-28 07:03:56',
+                'id' => 1,
+                'name' => 'Math',
+                'created_at' => '2022-04-05 13:12:46',
+                'updated_at' => '2022-04-05 13:12:46',
             ),
             1 => 
             array (
-                'created_at' => '2022-03-28 07:04:02',
-                'id' => 3,
-                'name' => 'Health',
-                'updated_at' => '2022-03-28 07:04:02',
+                'id' => 2,
+                'name' => 'English',
+                'created_at' => '2022-04-05 13:12:51',
+                'updated_at' => '2022-04-05 13:12:51',
             ),
             2 => 
             array (
-                'created_at' => '2022-03-28 11:34:24',
-                'id' => 4,
+                'id' => 3,
                 'name' => 'Turkish',
-                'updated_at' => '2022-03-28 11:34:24',
+                'created_at' => '2022-04-05 13:34:11',
+                'updated_at' => '2022-04-05 13:34:11',
             ),
             3 => 
             array (
-                'created_at' => '2022-03-28 11:35:00',
+                'id' => 4,
+                'name' => 'Health',
+                'created_at' => '2022-04-05 13:34:16',
+                'updated_at' => '2022-04-05 13:34:16',
+            ),
+            4 => 
+            array (
                 'id' => 5,
-                'name' => 'Mathematics',
-                'updated_at' => '2022-03-28 11:35:00',
+                'name' => 'Geography',
+                'created_at' => '2022-04-05 13:34:25',
+                'updated_at' => '2022-04-05 13:34:25',
+            ),
+            5 => 
+            array (
+                'id' => 6,
+                'name' => 'History',
+                'created_at' => '2022-04-05 13:34:46',
+                'updated_at' => '2022-04-05 13:34:46',
             ),
         ));
         

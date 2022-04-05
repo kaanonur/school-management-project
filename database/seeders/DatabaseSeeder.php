@@ -39,5 +39,11 @@ class DatabaseSeeder extends Seeder
         $this->call(FeeCategoryAmountsTableSeeder::class);
         $this->call(ExamTypesTableSeeder::class);
         $this->call(LeavePurposesTableSeeder::class);
+        $this->call(AssignSubjectsTableSeeder::class);
+        $this->call(SchoolSubjectsTableSeeder::class);
+        $this->call(EmployeeAttendancesTableSeeder::class);
+        $this->call(EmployeeLeavesTableSeeder::class);
+        $this->call(EmployeeSalaryLogsTableSeeder::class);
+        $this->call(DiscountStudentsTableSeeder::class);
     }
 }

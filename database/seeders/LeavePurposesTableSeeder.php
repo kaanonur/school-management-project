@@ -40,6 +40,13 @@ class LeavePurposesTableSeeder extends Seeder
                 'created_at' => '2022-04-05 07:49:31',
                 'updated_at' => '2022-04-05 07:49:31',
             ),
+            3 => 
+            array (
+                'id' => 4,
+                'name' => 'Military Mission',
+                'created_at' => '2022-04-05 08:04:53',
+                'updated_at' => '2022-04-05 08:04:53',
+            ),
         ));
         
         
