@@ -38,5 +38,6 @@ class DatabaseSeeder extends Seeder
         $this->call(DesignationsTableSeeder::class);
         $this->call(FeeCategoryAmountsTableSeeder::class);
         $this->call(ExamTypesTableSeeder::class);
+        $this->call(LeavePurposesTableSeeder::class);
     }
 }

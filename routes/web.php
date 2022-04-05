@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Backend\DashboardController;
+use App\Http\Controllers\Backend\Employee\EmployeeLeaveController;
 use App\Http\Controllers\Backend\Employee\EmployeeRegistrationController;
 use App\Http\Controllers\Backend\Employee\EmployeeSalaryController;
 use App\Http\Controllers\Backend\Setup\AssignSubjectController;
@@ -186,7 +187,7 @@ Route::middleware('auth')->group(function () {
         Route::get('registration/details/{user}', [EmployeeRegistrationController::class, 'show'])->name('employee.registration.show');
         Route::get('registration/edit/{user}', [EmployeeRegistrationController::class, 'edit'])->name('employee.registration.edit');
         Route::post('registration/update/{user}', [EmployeeRegistrationController::class, 'update'])->name('employee.registration.update');
-        Route::get('registration/delete/{user}', [EmployeeRegistrationController::class, 'destroy'])->name('employee.registration.delete');
+//        Route::get('registration/delete/{user}', [EmployeeRegistrationController::class, 'destroy'])->name('employee.registration.delete');
 
         // Salary Routes
         Route::get('salary/view', [EmployeeSalaryController::class, 'index'])->name('employee.salary.view');
@@ -194,6 +195,14 @@ Route::middleware('auth')->group(function () {
         Route::get('salary/increment/{user}', [EmployeeSalaryController::class, 'increment'])->name('employee.salary.increment');
         Route::post('salary/increment/{user}', [EmployeeSalaryController::class, 'update'])->name('employee.salary.update');
         Route::get('salary/details/{user}', [EmployeeSalaryController::class, 'show'])->name('employee.salary.show');
+
+        // Leave Routes
+        Route::get('leave/view', [EmployeeLeaveController::class, 'index'])->name('employee.leave.view');
+        Route::get('leave/add', [EmployeeLeaveController::class, 'create'])->name('employee.leave.create');
+        Route::post('leave/store', [EmployeeLeaveController::class, 'store'])->name('employee.leave.store');
+        Route::get('leave/edit/{employeeLeave}', [EmployeeLeaveController::class, 'edit'])->name('employee.leave.edit');
+        Route::post('leave/update/{employeeLeave}', [EmployeeLeaveController::class, 'update'])->name('employee.leave.update');
+        Route::get('leave/delete/{employeeLeave}', [EmployeeLeaveController::class, 'destroy'])->name('employee.leave.delete');
     });
 });
 

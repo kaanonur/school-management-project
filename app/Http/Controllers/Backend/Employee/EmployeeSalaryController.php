@@ -16,11 +16,6 @@ class EmployeeSalaryController extends Controller
         return view('backend.employee.employee_salary.view', compact('data'));
     }
 
-    public function create()
-    {
-
-    }
-
     public function show(User $user)
     {
         return view('backend.employee.employee_salary.detail', compact('user'));

@@ -8,8 +8,8 @@
                 <div class="col-12">
                     <div class="box">
                         <div class="box-header with-border d-flex justify-content-between">
-                            <h3 class="box-title">Employee List</h3>
-                            <a href="{{ route('employee.registration.create') }}" class="btn btn-rounded btn-success mb-5">Add Employee</a>
+                            <h3 class="box-title">Employee Leave List</h3>
+                            <a href="{{ route('employee.leave.create') }}" class="btn btn-rounded btn-success mb-5">Add Employee Leave</a>
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body">
@@ -20,34 +20,25 @@
                                         <th>SL</th>
                                         <th>Name</th>
                                         <th>ID No</th>
-                                        <th>Mobile</th>
-                                        <th>Gender</th>
-                                        <th>Join Date</th>
-                                        <th>Salary</th>
-                                        @if(\Illuminate\Support\Facades\Auth::user()->role == 'Admin')
-                                            <th>Code</th>
-                                        @endif
+                                        <th>Purpose</th>
+                                        <th>Start Date</th>
+                                        <th>End Date</th>
                                         <th>Action</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach($data['allData'] as $key => $employee)
+                                    @foreach($data['allData'] as $key => $leave)
                                         <tr>
                                             <td width="5%">{{ $key + 1 }}</td>
-                                            <td>{{ $employee->name }}</td>
-                                            <td>{{ $employee->id_no }}</td>
-                                            <td>{{ $employee->mobile }}</td>
-                                            <td>{{ $employee->gender }}</td>
-                                            <td>{{ $employee->join_date }}</td>
-                                            <td>{{ $employee->salary }}</td>
-                                            @if(\Illuminate\Support\Facades\Auth::user()->role == 'Admin')
-                                                <td>{{ $employee->code }}</td>
-                                            @endif
+                                            <td>{{ $leave->user->name }}</td>
+                                            <td>{{ $leave->user->id_no }}</td>
+                                            <td>{{ $leave->purpose->name }}</td>
+                                            <td>{{ date('d-m-Y', strtotime($leave->start_date)) }}</td>
+                                            <td>{{ date('d-m-Y', strtotime($leave->end_date)) }}</td>
                                             <td width="19%">
                                                 <div class="text-center">
-                                                    <a href="{{ route('employee.registration.edit', $employee->id) }}" class="btn btn-info"><i class="fa fa-edit"></i></a>
-                                                    <a href="{{ route('employee.registration.show', $employee->id) }}" class="btn btn-primary"><i class="fa fa-eye"></i></a>
-{{--                                                    <a id="delete" href="{{ route('employee.registration.delete', $employee->id) }}" class="btn btn-danger"><i class="fa fa-remove"></i></a>--}}
+                                                    <a href="{{ route('employee.leave.edit', $leave->id) }}" class="btn btn-info">Edit</a>
+                                                    <a id="delete" href="{{ route('employee.leave.delete', $leave->id) }}" class="btn btn-danger">Delete</a>
                                                 </div>
                                             </td>
                                         </tr>
@@ -56,6 +47,10 @@
                                     <tr>
                                         <th>SL</th>
                                         <th>Name</th>
+                                        <th>ID No</th>
+                                        <th>Purpose</th>
+                                        <th>Start Date</th>
+                                        <th>End Date</th>
                                         <th>Action</th>
                                     </tr>
                                     </tfoot>
