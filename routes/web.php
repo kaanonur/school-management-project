@@ -5,6 +5,7 @@ use App\Http\Controllers\Backend\Employee\EmployeeAttendanceController;
 use App\Http\Controllers\Backend\Employee\EmployeeLeaveController;
 use App\Http\Controllers\Backend\Employee\EmployeeRegistrationController;
 use App\Http\Controllers\Backend\Employee\EmployeeSalaryController;
+use App\Http\Controllers\Backend\Employee\MonthlySalaryController;
 use App\Http\Controllers\Backend\Setup\AssignSubjectController;
 use App\Http\Controllers\Backend\Setup\DesignationController;
 use App\Http\Controllers\Backend\Setup\ExamTypeController;
@@ -211,6 +212,11 @@ Route::middleware('auth')->group(function () {
         Route::post('attendance/store', [EmployeeAttendanceController::class, 'store'])->name('employee.attendance.store');
         Route::get('attendance/edit/{date}', [EmployeeAttendanceController::class, 'edit'])->name('employee.attendance.edit');
         Route::get('attendance/show/{date}', [EmployeeAttendanceController::class, 'show'])->name('employee.attendance.show');
+
+        // Monthly Salary
+        Route::get('monthly/salary/view', [MonthlySalaryController::class, 'index'])->name('employee.monthly.salary.view');
+        Route::get('monthly/salary/get', [MonthlySalaryController::class, 'monthlySalaryGet'])->name('employee.monthly.salary.get');
+        Route::get('monthly/salary/paySlip/{user}', [MonthlySalaryController::class, 'paySlip'])->name('employee.monthly.salary.paySlip');
     });
 });
 
