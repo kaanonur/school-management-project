@@ -11,4 +11,9 @@ class StudentMarks extends Model
 
     protected $table = 'student_marks';
     protected $guarded = [];
+
+    public function student()
+    {
+        return $this->belongsTo(User::class, 'student_id', 'id');
+    }
 }

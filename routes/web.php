@@ -6,6 +6,7 @@ use App\Http\Controllers\Backend\Employee\EmployeeLeaveController;
 use App\Http\Controllers\Backend\Employee\EmployeeRegistrationController;
 use App\Http\Controllers\Backend\Employee\EmployeeSalaryController;
 use App\Http\Controllers\Backend\Employee\MonthlySalaryController;
+use App\Http\Controllers\Backend\Marks\GradeController;
 use App\Http\Controllers\Backend\Marks\MarksController;
 use App\Http\Controllers\Backend\Setup\AssignSubjectController;
 use App\Http\Controllers\Backend\Setup\DesignationController;
@@ -220,11 +221,24 @@ Route::middleware('auth')->group(function () {
         Route::get('monthly/salary/paySlip/{user}', [MonthlySalaryController::class, 'paySlip'])->name('employee.monthly.salary.paySlip');
     });
 
-    // Employee Routes
+    // Marks Routes
     Route::prefix('marks')->group(function () {
+
+        //Entry Routes
         Route::get('entry/add', [MarksController::class, 'create'])->name('marks.entry.create');
         Route::get('subjects/get', [MarksController::class, 'getSubjects'])->name('marks.getSubjects');
         Route::get('getStudents', [MarksController::class, 'getStudents'])->name('student.marks.getStudents');
+        Route::get('getStudentsWithMarks', [MarksController::class, 'getStudentsWithMarks'])->name('student.marks.getStudentsWithMarks');
+        Route::post('entry/store', [MarksController::class, 'store'])->name('marks.entry.store');
+        Route::get('entry/edit', [MarksController::class, 'edit'])->name('marks.entry.edit');
+        Route::post('entry/update', [MarksController::class, 'update'])->name('marks.entry.update');
+
+        // Grade Routes
+        Route::get('grade/view', [GradeController::class, 'index'])->name('marks.grade.view');
+        Route::get('grade/add', [GradeController::class, 'create'])->name('marks.grade.create');
+        Route::post('grade/store', [GradeController::class, 'store'])->name('marks.grade.store');
+        Route::get('grade/edit/{marksGrade}', [GradeController::class, 'edit'])->name('marks.grade.edit');
+        Route::post('grade/update/{marksGrade}', [GradeController::class, 'update'])->name('marks.grade.update');
     });
 });
 

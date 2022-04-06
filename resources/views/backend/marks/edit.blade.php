@@ -10,11 +10,11 @@
                 <div class="col-md-12">
                     <div class="box bb-3 border-warning">
                         <div class="box-header">
-                            <h4 class="box-title">Student <strong>Marks Entry</strong></h4>
+                            <h4 class="box-title">Student <strong>Marks Edit</strong></h4>
                         </div>
 
                         <div class="box-body">
-                            <form method="POST" action="{{ route('marks.entry.store') }}">
+                            <form method="POST" action="{{ route('marks.entry.update') }}">
                                 @csrf
                                 <div class="row">
                                     <div class="col-md-3">
@@ -87,7 +87,7 @@
 
                                             </tbody>
                                         </table>
-                                        <input type="submit" class="btn btn-rounded btn-primary" value="Submit">
+                                        <input type="submit" class="btn btn-rounded btn-primary" value="Update">
                                     </div>
                                 </div>
                             </form>
@@ -106,7 +106,7 @@
             let assign_subject_id = $('#assign_subject_id').val();
             let exam_type_id = $('#exam_type_id').val();
             $.ajax({
-                url: "{{ route('student.marks.getStudents')}}",
+                url: "{{ route('student.marks.getStudentsWithMarks')}}",
                 type: "GET",
                 data: {
                     'year_id':year_id,
@@ -124,7 +124,7 @@
                             '<td>'+v.student.name+'</td>'+
                             '<td>'+v.student.father_name+'</td>'+
                             '<td>'+v.student.gender+'</td>'+
-                            '<td><input type="text" class="form-control form-control-sm" name="marks[]"></td>'+
+                            '<td><input type="text" class="form-control form-control-sm" name="marks[]" value="'+v.marks+'"></td>'+
                             '</tr>';
                     });
                     html = $('#marks-entry-tr').html(html);
