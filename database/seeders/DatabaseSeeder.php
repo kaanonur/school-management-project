@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\User;
+use Database\Factories\StudentRegistrationFactory;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
@@ -29,7 +30,6 @@ class DatabaseSeeder extends Seeder
             'role' => 'admin',
             'status' => 1,
         ]);
-        User::factory(10)->create();
         $this->call(StudentClassesTableSeeder::class);
         $this->call(StudentYearsTableSeeder::class);
         $this->call(StudentGroupsTableSeeder::class);
@@ -45,5 +45,7 @@ class DatabaseSeeder extends Seeder
         $this->call(EmployeeLeavesTableSeeder::class);
         $this->call(EmployeeSalaryLogsTableSeeder::class);
         $this->call(DiscountStudentsTableSeeder::class);
+        $this->call(UsersTableSeeder::class);
+        $this->call(AssignStudentsTableSeeder::class);
     }
 }
