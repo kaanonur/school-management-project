@@ -24,7 +24,7 @@
                                         <div class="form-group">
                                             <h5>Attendance Date <span class="text-danger">*</span></h5>
                                             <div class="controls">
-                                                <input type="date" name="date" class="form-control" id="date" value="{{ old('start_date') }}">
+                                                <input type="date" name="date" class="form-control" id="date" value="{{ old('date') }}">
                                             </div>
                                         </div>
                                     </div>

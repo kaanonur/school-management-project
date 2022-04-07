@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Backend\Account\StudentFeeController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\Employee\EmployeeAttendanceController;
 use App\Http\Controllers\Backend\Employee\EmployeeLeaveController;
@@ -239,6 +240,15 @@ Route::middleware('auth')->group(function () {
         Route::post('grade/store', [GradeController::class, 'store'])->name('marks.grade.store');
         Route::get('grade/edit/{marksGrade}', [GradeController::class, 'edit'])->name('marks.grade.edit');
         Route::post('grade/update/{marksGrade}', [GradeController::class, 'update'])->name('marks.grade.update');
+    });
+
+    // Account Routes
+    Route::prefix('account')->group(function () {
+        // Student Fee Routes
+        Route::get('student/fee/view', [StudentFeeController::class, 'index'])->name('student.fee.view');
+        Route::get('student/fee/add', [StudentFeeController::class, 'create'])->name('student.fee.create');
+        Route::get('account/fee/getStudents', [StudentFeeController::class, 'getStudents'])->name('account.fee.getStudents');
+        Route::post('student/fee/store', [StudentFeeController::class, 'store'])->name('account.fee.store');
     });
 });
 
