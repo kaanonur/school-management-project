@@ -28,6 +28,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\ProfileController;
+use App\Http\Controllers\Backend\Account;
 
 /*
 |--------------------------------------------------------------------------
@@ -249,6 +250,12 @@ Route::middleware('auth')->group(function () {
         Route::get('student/fee/add', [StudentFeeController::class, 'create'])->name('student.fee.create');
         Route::get('account/fee/getStudents', [StudentFeeController::class, 'getStudents'])->name('account.fee.getStudents');
         Route::post('student/fee/store', [StudentFeeController::class, 'store'])->name('account.fee.store');
+
+        // Employee Salary Routes
+        Route::get('employee/salary/view', [Account\EmployeeSalaryController::class, 'index'])->name('account.salary.view');
+        Route::get('employee/salary/add', [Account\EmployeeSalaryController::class, 'create'])->name('account.salary.create');
+        Route::get('employee/salary/getEmployees', [Account\EmployeeSalaryController::class, 'getEmployees'])->name('account.salary.getEmployees');
+        Route::post('employee/salary/store', [Account\EmployeeSalaryController::class, 'store'])->name('account.salary.store');
     });
 });
 

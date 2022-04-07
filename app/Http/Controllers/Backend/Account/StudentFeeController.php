@@ -97,7 +97,7 @@ class StudentFeeController extends Controller
                 ->where('class_id',$student->class_id)
                 ->where('fee_category_id',$feeCategoryId)
                 ->whereMonth('date',$date)->first();
-            if($accountStudentFees !=null) {
+            if($accountStudentFees != null) {
                 $checked = 'checked';
             }else{
                 $checked = '';

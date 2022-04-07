@@ -17,7 +17,7 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <h5>Name <span class="text-danger">*</span></h5>
+                                                    <h5>Attendance Date <span class="text-danger">*</span></h5>
                                                     <div class="controls">
                                                         <input type="date" name="date" class="form-control" value="{{ old('date') }}">
                                                     </div>
