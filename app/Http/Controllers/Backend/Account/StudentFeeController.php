@@ -68,8 +68,6 @@ class StudentFeeController extends Controller
 
             return redirect()->back()->with($notification);
         }
-
-
     }
 
     public function getStudents(Request $request)

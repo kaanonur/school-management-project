@@ -31,7 +31,7 @@
                                             <td>{{ $value->user->id_no }}</td>
                                             <td>{{ $value->user->name }}</td>
                                             <td>{{ $value->amount }}</td>
-                                            <td>{{ date('d-m-Y', strtotime($value->date)) }}</td>
+                                            <td>{{ date('M Y', strtotime($value->date)) }}</td>
                                         </tr>
                                     @endforeach
                                     <tfoot>

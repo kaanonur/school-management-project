@@ -23,7 +23,35 @@ class EmployeeSalaryController extends Controller
 
     public function store(Request $request)
     {
+        $date = date('Y-m-d',strtotime($request->date));
 
+        AccountEmployeeSalary::where('date', $date)->delete();
+
+        $checkData = count($request->check_manage);
+
+        if ($checkData != null) {
+            for ($i = 0; $i < $checkData; $i++) {
+                $accountEmployeeSalary = new AccountEmployeeSalary();
+                $accountEmployeeSalary->date = $date;
+                $accountEmployeeSalary->employee_id = $request->employee_id[$request->check_manage[$i]];
+                $accountEmployeeSalary->amount = $request->amount[$request->check_manage[$i]];
+                $accountEmployeeSalary->save();
+            }
+        }
+
+        if (!empty(@$accountEmployeeSalary) || empty($checkData)) {
+            $notification = [];
+            $notification['message'] = 'Updated Succesfully';
+            $notification['alert_type'] = 'success';
+
+            return redirect()->route('account.salary.view')->with($notification);
+        } else {
+            $notification = [];
+            $notification['message'] = 'Something Went Wrong';
+            $notification['alert_type'] = 'error';
+
+            return redirect()->back()->with($notification);
+        }
     }
 
     public function getEmployees(Request $request)
