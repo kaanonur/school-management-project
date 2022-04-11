@@ -256,6 +256,14 @@ Route::middleware('auth')->group(function () {
         Route::get('employee/salary/add', [Account\EmployeeSalaryController::class, 'create'])->name('account.salary.create');
         Route::get('employee/salary/getEmployees', [Account\EmployeeSalaryController::class, 'getEmployees'])->name('account.salary.getEmployees');
         Route::post('employee/salary/store', [Account\EmployeeSalaryController::class, 'store'])->name('account.salary.store');
+
+        // Other Cost Routes
+        Route::get('other/cost/view', [Account\OtherCostController::class, 'index'])->name('other.cost.view');
+        Route::get('other/cost/add', [Account\OtherCostController::class, 'create'])->name('other.cost.create');
+        Route::post('other/cost/store', [Account\OtherCostController::class, 'store'])->name('other.cost.store');
+        Route::get('other/cost/edit/{accountOtherCost}', [Account\OtherCostController::class, 'edit'])->name('other.cost.edit');
+        Route::post('other/cost/update/{accountOtherCost}', [Account\OtherCostController::class, 'update'])->name('other.cost.update');
+        Route::get('other/cost/delete/{accountOtherCost}', [Account\OtherCostController::class, 'destroy'])->name('other.cost.destroy');
     });
 });
 
