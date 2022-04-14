@@ -20,7 +20,7 @@
                                     <div class="form-group">
                                         <h5>Date <span class="text-danger">*</span></h5>
                                         <div class="controls">
-                                            <input type="date" name="date" class="form-control" id="date" value="{{ old('date') }}">
+                                            <input type="month" name="date" class="form-control" id="date" value="{{ old('date') }}">
                                         </div>
                                     </div>
                                 </div>

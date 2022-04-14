@@ -43,7 +43,7 @@ class StudentFeeController extends Controller
         $checkData = $request->check_manage;
 
         if ($checkData != null) {
-            for ($i = 0; $i < $checkData; $i++) {
+            for ($i = 0; $i < count($checkData); $i++) {
                 $accountStudentFee = new AccountStudentFee();
                 $accountStudentFee->year_id = $request->year_id;
                 $accountStudentFee->class_id = $request->class_id;

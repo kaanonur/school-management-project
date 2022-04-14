@@ -73,7 +73,7 @@ class EmployeeSalaryController extends Controller
         foreach ($data as $key => $v) {
 
             $accountSalary = AccountEmployeeSalary::where('employee_id', $v->employee_id)
-                ->whereMonth('date', $date)->first();
+                ->where('date', $date)->first();
 
             if($accountSalary != null) {
                 $checked = 'checked';

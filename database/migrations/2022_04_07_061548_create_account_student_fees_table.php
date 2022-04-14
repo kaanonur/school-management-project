@@ -19,7 +19,7 @@ class CreateAccountStudentFeesTable extends Migration
             $table->unsignedInteger('class_id')->nullable();
             $table->unsignedInteger('student_id')->nullable();
             $table->unsignedInteger('fee_category_id')->nullable();
-            $table->date('date')->nullable();
+            $table->string('date')->nullable();
             $table->double('amount')->nullable();
             $table->timestamps();
         });

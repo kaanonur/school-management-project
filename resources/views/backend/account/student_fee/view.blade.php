@@ -37,7 +37,7 @@
                                             <td>{{ $value->studentClass->name }}</td>
                                             <td>{{ $value->feeCategory->name }}</td>
                                             <td>{{ $value->amount }}</td>
-                                            <td>{{ date('d-m-Y', strtotime($value->date)) }}</td>
+                                            <td>{{ date('m-Y', strtotime($value->date)) }}</td>
                                         </tr>
                                     @endforeach
                                     <tfoot>
