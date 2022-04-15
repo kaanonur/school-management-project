@@ -28,7 +28,7 @@
     <tr>
         <td><h2>
                 <?php $image_path = '/backend/images/logo/logo-3.jpg'; ?>
-                <img src="{{ public_path() . $image_path }}" width="200" height="100">
+                <img src="{{ asset($image_path) }}" width="200" height="100">
             </h2></td>
         <td><h2>Easy School ERP</h2>
             <p>School Address</p>
