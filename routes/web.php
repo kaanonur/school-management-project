@@ -9,6 +9,7 @@ use App\Http\Controllers\Backend\Employee\EmployeeSalaryController;
 use App\Http\Controllers\Backend\Employee\MonthlySalaryController;
 use App\Http\Controllers\Backend\Marks\GradeController;
 use App\Http\Controllers\Backend\Marks\MarksController;
+use App\Http\Controllers\Backend\Report\AttendanceReportController;
 use App\Http\Controllers\Backend\Report\MarkSheetController;
 use App\Http\Controllers\Backend\Report\ProfitController;
 use App\Http\Controllers\Backend\Setup\AssignSubjectController;
@@ -279,6 +280,10 @@ Route::middleware('auth')->group(function () {
         // MarkSheet Generate Routes
         Route::get('markSheet/generate/view', [MarkSheetController::class, 'index'])->name('markSheet.generate.view');
         Route::get('report/markSheet/get', [MarkSheetController::class, 'getMarkSheet'])->name('report.markSheet.get');
+
+        // Attendance Routes
+        Route::get('attendance/report/view', [AttendanceReportController::class, 'index'])->name('attendance.report.view');
+        Route::get('attendance/report/get', [AttendanceReportController::class, 'getAttendanceReports'])->name('attendance.report.get');
     });
 });
 
