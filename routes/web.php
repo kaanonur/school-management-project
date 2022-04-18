@@ -12,6 +12,7 @@ use App\Http\Controllers\Backend\Marks\MarksController;
 use App\Http\Controllers\Backend\Report\AttendanceReportController;
 use App\Http\Controllers\Backend\Report\MarkSheetController;
 use App\Http\Controllers\Backend\Report\ProfitController;
+use App\Http\Controllers\Backend\Report\StudentResultController;
 use App\Http\Controllers\Backend\Setup\AssignSubjectController;
 use App\Http\Controllers\Backend\Setup\DesignationController;
 use App\Http\Controllers\Backend\Setup\ExamTypeController;
@@ -52,7 +53,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', [DashboardCon
 
 Route::get('/admin/logout', [AdminController::class, 'logout'])->name('admin.logout');
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'prevent-back-history'])->group(function () {
     // User Management Routes
     Route::prefix('users')->group(function () {
         Route::get('view', [UserController::class, 'index'])->name('user.view');
@@ -284,6 +285,13 @@ Route::middleware('auth')->group(function () {
         // Attendance Routes
         Route::get('attendance/report/view', [AttendanceReportController::class, 'index'])->name('attendance.report.view');
         Route::get('attendance/report/get', [AttendanceReportController::class, 'getAttendanceReports'])->name('attendance.report.get');
+
+        // Student Result Routes
+        Route::get('student/result/view', [StudentResultController::class, 'index'])->name('student.result.view');
+        Route::get('student/result/get', [StudentResultController::class, 'getStudentResults'])->name('student.result.get');
+        // Student Result Routes
+        Route::get('student/id_card/view', [StudentResultController::class, 'idCardView'])->name('student.id_card.view');
+        Route::get('student/id_card/get', [StudentResultController::class, 'getIdCard'])->name('student.id_card.get');
     });
 });
 
